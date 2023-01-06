@@ -1,6 +1,6 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_go_router/models/product_model.dart';
 import 'package:go_router/go_router.dart';
 
@@ -42,6 +42,17 @@ class ProductListScreen extends StatelessWidget {
               );
             },
             icon: Icon(Icons.sort),
+          ),
+          IconButton(
+            onPressed: () {
+              String sort = asc ? "desc" : "asc";
+              return context.goNamed(
+                "product_list",
+                params: <String, String>{"category": category},
+                queryParams: <String, String>{"filter": "10"},
+              );
+            },
+            icon: Icon(Icons.filter_list_alt),
           ),
         ],
       ),

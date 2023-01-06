@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_go_router/cubits/cubit/login_cubit.dart';
 import 'package:flutter_go_router/models/category_model.dart';
 import 'package:go_router/go_router.dart';
 
@@ -14,6 +16,14 @@ class CategoryScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Categories"),
         backgroundColor: Colors.black,
+        actions: [
+          IconButton(
+            onPressed: (() {
+              context.read<LoginCubit>().logout();
+            }),
+            icon: Icon(Icons.logout),
+          ),
+        ],
       ),
       body: ListView.builder(
         itemCount: categories.length,
